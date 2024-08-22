@@ -1,0 +1,74 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+      }
+
+      /*****NUEVOS ESTILOS PARA FORMULARIO******/
+      input {
+        margin-bottom: 15px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+  
+      button {
+        padding: 10px;
+        background-color: #747cf0;
+        color: white;
+        width: 100%;
+        font-size: 16px;
+      }
+  
+      button:hover {
+        background-color: #5f66e0;
+      }
+      /*****************************************/
+
+    </style>
+  </head>
+  <body>
+    <h1>Server-Side Rendered Book List</h1>
+    <ul>
+      <% books.forEach(function(book) { %>
+      <li><strong><%= book.title %></strong> by <%= book.author %></li>
+      <% }); %>
+    </ul>
+
+    <!-------FORM CON TITULO Y AUTOR------->
+    <h1>Add a New Book</h1>
+    <form action="/add-book" method="post">
+      <label for="title">Title:</label> <!--entrada titulo-->
+      <input type="text" id="title" name="title" required /><br />
+      <label for="author">Author:</label> <!--entrada autor-->
+      <input type="text" id="author" name="author" required /><br />
+      <button type="submit">Add</button> <!--boton enviar formulario-->
+    </form>
+    <!------------------------------------->
+
+
+  </body>
+</html>
